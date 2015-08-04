@@ -88,17 +88,26 @@ WSGI_APPLICATION = 'avaliacao360.wsgi.application'
 #    }
 #}
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'av360',
+#        'USER': 'postgres',
+#        'PASSWORD': 'thais',
+#        'HOST': '127.0.0.1',
+#        'PORT': '5432',
+#    }
+#}
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'av360',
-        'USER': 'postgres',
-        'PASSWORD': 'thais',
-        'HOST': '127.0.0.1',
-        'PORT': '5432',
+      'default': {
+          'ENGINE': 'django.db.backends.postgresql_psycopg2',  
+          'NAME':     os.environ['OPENSHIFT_APP_NAME'],
+          'USER':     os.environ['OPENSHIFT_POSTGRESQL_DB_USERNAME'],
+          'PASSWORD': os.environ['OPENSHIFT_POSTGRESQL_DB_PASSWORD'],
+          'HOST':     os.environ['OPENSHIFT_POSTGRESQL_DB_HOST'],
+          'PORT':     os.environ['OPENSHIFT_POSTGRESQL_DB_PORT'],
     }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
